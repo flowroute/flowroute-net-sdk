@@ -1,0 +1,24 @@
+﻿{
+  "name": "Flowroute",
+  "title": "Flowroute .NET SDK",
+  "version": "0.2.0-beta",
+  "description": ".NET implementation of the Flowroute v1 and v2 APIs",
+  "copyright": "(c) 2016 Flowroute",
+  "language": "en-US",
+  "authors": [
+    "Kevin Griffin (kevin@kevgriffin.com)"
+  ],
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.1"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+    },
+    "net451": {
+
+    }
+  }
+}

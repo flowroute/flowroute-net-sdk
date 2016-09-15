@@ -1,7 +1,7 @@
 ﻿{
   "name": "Flowroute",
   "title": "Flowroute .NET SDK",
-  "version": "0.2.0-beta",
+  "version": "0.3.0-beta",
   "description": ".NET implementation of the Flowroute v1 and v2 APIs",
   "copyright": "(c) 2016 Flowroute",
   "language": "en-US",

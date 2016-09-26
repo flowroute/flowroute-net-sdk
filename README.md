@@ -51,36 +51,60 @@ var response = await client.Messaging.GetMessageDetailsAsync(messageId);
 ```
 ### Phone Number Management
 
-#### ListAvailableNPAs(int limit = 10)
+#### ListAvailableNPAsAsync(int limit = 10)
 ```csharp
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.ListAvailableNPAsAsync();
 ```
-#### RetrieveAvailableNPANetworkNumberingExchanges(int npa, int limit = 10, int page = 1)
+#### RetrieveAvailableNPANetworkNumberingExchangesAsync(int npa, int limit = 10, int page = 1)
 ```csharp
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.RetrieveAvailableNPANetworkNumberingExchangesAsync(757);
 ```
-#### Search(FlowroutePhoneNumberSearchCriteria searchCriteria, int limit = 10, int page = 1)
+#### SearchAsync(FlowroutePhoneNumberSearchCriteria searchCriteria, int limit = 10, int page = 1)
 ```csharp
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.SearchAsync(new FlowroutePhoneNumberSearchCriteria() { NPA = 757 });
+var results = await client.PhoneNumbers.SearchAsync(new FlowroutePhoneNumberSearchCriteria() { RateCenter = "SEATTLE", State = "WA" });
 ```
 #### PurchasePhoneNumber(string phoneNumberToPurchase, string billingMethod = "METERED")
 ```csharp
+var goodPhoneNumber = "17575555555";
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.PurchasePhoneNumberAsync(goodPhoneNumber);
 ```
 #### ListTelephoneNumbers(int limit = 10, int page = 1, string pattern = "")
 ```csharp
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.ListTelephoneNumbersAsync();
 ```
 #### ListTelephoneNumberDetails(string telephoneNumber)
 ```csharp
+var goodPhoneNumber = "17575555555";
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.ListTelephoneNumberDetailsAsync(goodPhoneNumber);
 ```
 #### UpdateTelephoneNumberRoutes(string telephoneNumber, FlowrouteRoute primaryRoute, FlowrouteRoute secondaryRoute)
 ```csharp
+var goodPhoneNumber = "17575555555";
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.UpdateTelephoneNumberRoutesAsync(goodPhoneNumber,
+    new FlowrouteRoute() { Name = "Primary1" },
+    new FlowrouteRoute() { Name = "Primary2" });
 ```
 #### ListInboundRoutes(int limit = 10, int page = 1)
 ```csharp
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.ListInboundRoutesAsync();
 ```
 #### CreateInboundRoute(string routeName, InboundRouteType type, string value)
 ```csharp
+FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+var results = await client.PhoneNumbers.CreateInboundRouteAsync("TestRoute", InboundRouteType.HOST, "kevgriffin.com");
 ```
 
 ## Support, Bug Fixes, Pull Requests
-See an issue?  We accept pull requests!
+See an issue? Please create an issue and we'll take a look! We accept pull requests!
 
 ## About
 This project has been developed and maintained by [Kevin Griffin](https://twitter.com/1kevgriff).  Visit him at [http://kevgriffin.com](http://kevgriffin.com).

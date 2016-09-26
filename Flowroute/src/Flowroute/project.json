@@ -1,7 +1,7 @@
 ﻿{
   "name": "Flowroute",
   "title": "Flowroute .NET SDK",
-  "version": "0.3.0-beta",
+  "version": "0.4.0-beta",
   "description": ".NET implementation of the Flowroute v1 and v2 APIs",
   "copyright": "(c) 2016 Flowroute",
   "language": "en-US",
@@ -10,15 +10,20 @@
   ],
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0",
     "Newtonsoft.Json": "9.0.1"
   },
 
   "frameworks": {
     "netcoreapp1.0": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0"
+      }
     },
-    "net451": {
-
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Net": "4.0.0.0",
+        "System.Net.Http": "4.0.0.0"   
+      }
     }
   }
 }

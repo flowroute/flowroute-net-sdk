@@ -1,10 +1,10 @@
 # Flowroute.DotNet
 
-Current version: 0.1.0-beta
+Current version: 1.0.0 (Sept 26, 2016)
 
 ## Install via NuGet
 ```
-Install-Package Flowroute -pre
+Install-Package Flowroute
 ```
 
 ## Obtaining your API access key and secret key

@@ -1,7 +1,7 @@
 ﻿{
   "name": "Flowroute",
   "title": "Flowroute .NET SDK",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": ".NET implementation of the Flowroute v1 and v2 APIs",
   "copyright": "(c) 2016 Flowroute",
   "language": "en-US",
@@ -9,7 +9,11 @@
     "Kevin Griffin (kevin@kevgriffin.com)"
   ],
   "packOptions": {
-    "licenseUrl": ""
+    "licenseUrl": "https://github.com/flowroute/flowroute-net-sdk/blob/master/LICENSE",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/flowroute/flowroute-net-sdk/blob/master/LICENSE"
+    }
   },
   "dependencies": {
     "Newtonsoft.Json": "9.0.1"

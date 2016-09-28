@@ -1,6 +1,6 @@
 # Flowroute.DotNet
 
-Current version: 1.0.0 (Sept 26, 2016)
+Current version: 1.0.1 (Sept 27, 2016)
 
 ## Install via NuGet
 ```

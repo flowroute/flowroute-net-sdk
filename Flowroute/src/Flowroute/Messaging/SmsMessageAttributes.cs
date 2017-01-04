@@ -18,6 +18,7 @@ namespace Flowroute.Messaging
         [JsonProperty("has_mms")]
         public bool HasMms { get; set; }
         public string To { get; set; }
+        public string From { get; set; }
 
         [JsonProperty("amount_display")]
         public string AmountDisplay { get; set; }

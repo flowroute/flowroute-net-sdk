@@ -140,5 +140,28 @@ namespace Flowroute.Tests
             Assert.IsTrue(response.Success);
             Assert.AreEqual(response.Data.Id, messageId);
         }
+
+        [Test]
+        public async Task MessageDetailsShouldContainPopulatedFromField()
+        {
+            var messageId = await SendTestMessage(101);
+
+            FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+            var response = await client.Messaging.GetMessageDetailsAsync(messageId);
+
+            Assert.IsNotEmpty(response.Data.Attributes.From);
+        }
+
+
+        [Test]
+        public async Task MessageDetailsShouldContainPopulatedToField()
+        {
+            var messageId = await SendTestMessage(101);
+
+            FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
+            var response = await client.Messaging.GetMessageDetailsAsync(messageId);
+
+            Assert.IsNotEmpty(response.Data.Attributes.To);
+        }
     }
 }

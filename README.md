@@ -1,110 +1,17 @@
-# Flowroute.DotNet
+# Numbers and Messaging .NET SDK
 
-Current version: 1.0.2 (Jan 4th, 2017)
+**flowroute-net-sdk** is a .NET API Wrapper that provides methods for interacting with [v1](https://developer.flowroute.com/api/numbers/overview) and [v2](https://developer.flowroute.com/api/messaging/overview/) of the Flowroute API. These methods can be used to accomplish the following:
+## Number Management
+* Search for purchasable phone numbers
+* Purchase phone numbers
+* View your owned phone numbers and their related details
+* Create new inbound routes
+* Update the primary and failover route on a phone number
 
-## Install via NuGet
-```
-Install-Package Flowroute
-```
+## Messaging
+* Send an outbound SMS from a Flowroute phone number
+* Retrieve a Message Detail Record (MDR) by searching for a specific message record ID 
 
-## Obtaining your API access key and secret key
-Go to `https://manage.flowroute.com/accounts/preferences/api/` and you will see your API credentials.
+### Documentation 
+To work with the SDK, please read and follow the steps [here](http://developer.flowroute.com/libraries/dot-net/).
 
-## How to Use
-
-### Creating an instance of the Flowroute client
-```csharp
-string AccessKey = "accessKeyFromWebsite";
-string SecretKey = "secretKeyFromWebsite";
-
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-```
-### Messaging
-After you have created an instance of the Flowroute client, you will have access to the `MessagingClient`.  This client provides three methods:
-
-#### SendMessageAsync(string toPhoneNumber, string fromPhoneNumber, string body)
-
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var response = await client.Messaging.SendMessageAsync("17578675309", "17575555555", $"TestMessage");
-```
-
-#### SendMessageAsync(SmsRequest request)
-
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var request = new SmsRequest
-{
-    ToPhoneNumber = "17578675309",
-    FromPhoneNumber = "17575555555",
-    Body = "TestMessage"
-};
-
-var response = await client.Messaging.SendMessageAsync(request);
-```
-
-#### GetMessageDetailsAsync(string recordId)
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var response = await client.Messaging.GetMessageDetailsAsync(messageId);
-
-```
-### Phone Number Management
-
-#### ListAvailableNPAsAsync(int limit = 10)
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.ListAvailableNPAsAsync();
-```
-#### RetrieveAvailableNPANetworkNumberingExchangesAsync(int npa, int limit = 10, int page = 1)
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.RetrieveAvailableNPANetworkNumberingExchangesAsync(757);
-```
-#### SearchAsync(FlowroutePhoneNumberSearchCriteria searchCriteria, int limit = 10, int page = 1)
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.SearchAsync(new FlowroutePhoneNumberSearchCriteria() { NPA = 757 });
-var results = await client.PhoneNumbers.SearchAsync(new FlowroutePhoneNumberSearchCriteria() { RateCenter = "SEATTLE", State = "WA" });
-```
-#### PurchasePhoneNumber(string phoneNumberToPurchase, string billingMethod = "METERED")
-```csharp
-var goodPhoneNumber = "17575555555";
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.PurchasePhoneNumberAsync(goodPhoneNumber);
-```
-#### ListTelephoneNumbers(int limit = 10, int page = 1, string pattern = "")
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.ListTelephoneNumbersAsync();
-```
-#### ListTelephoneNumberDetails(string telephoneNumber)
-```csharp
-var goodPhoneNumber = "17575555555";
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.ListTelephoneNumberDetailsAsync(goodPhoneNumber);
-```
-#### UpdateTelephoneNumberRoutes(string telephoneNumber, FlowrouteRoute primaryRoute, FlowrouteRoute secondaryRoute)
-```csharp
-var goodPhoneNumber = "17575555555";
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.UpdateTelephoneNumberRoutesAsync(goodPhoneNumber,
-    new FlowrouteRoute() { Name = "Primary1" },
-    new FlowrouteRoute() { Name = "Primary2" });
-```
-#### ListInboundRoutes(int limit = 10, int page = 1)
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.ListInboundRoutesAsync();
-```
-#### CreateInboundRoute(string routeName, InboundRouteType type, string value)
-```csharp
-FlowrouteClient client = new FlowrouteClient(AccessKey, SecretKey);
-var results = await client.PhoneNumbers.CreateInboundRouteAsync("TestRoute", InboundRouteType.HOST, "kevgriffin.com");
-```
-
-## Support, Bug Fixes, Pull Requests
-See an issue? Please create an issue and we'll take a look! We accept pull requests!
-
-## About
-This project has been developed and maintained by [Kevin Griffin](https://twitter.com/1kevgriff).  Visit him at [http://kevgriffin.com](http://kevgriffin.com).

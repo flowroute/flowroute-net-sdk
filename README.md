@@ -13,5 +13,5 @@
 * Retrieve a Message Detail Record (MDR) by searching for a specific message record ID 
 
 ### Documentation 
-To work with the SDK, please read and follow the steps [here](http://developer.flowroute.com/libraries/dot-net/).
+To work with the SDK, please read and follow the steps in the [Flowroute .NET Library v1](http://developer.flowroute.com/libraries/v1/dot-net/).
 
